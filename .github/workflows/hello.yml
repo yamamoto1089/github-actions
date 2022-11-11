@@ -12,4 +12,4 @@ jobs:
     runs-on: ubuntu-latest
     # job内で実行される処理を指定
     steps:
-      - run: echo "Hello,World!"
+      - run: echo "Hello!!!!!"
