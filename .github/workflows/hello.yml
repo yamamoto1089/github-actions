@@ -1,9 +1,15 @@
+# ワークフローの名前
 name: Hello,World!
+
+# push時に実行
 on: push
 
+# 実行するjob
 jobs:
   build:
     name: Greeting
+    # jobが実行される仮想環境を指定
     runs-on: ubuntu-latest
+    # job内で実行される処理を指定
     steps:
       - run: echo "Hello,World!"

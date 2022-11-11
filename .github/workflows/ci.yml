@@ -1,10 +1,18 @@
+# ワークフローの名前
 name: Continuous Integration
+# ワークフローを実行するイベント
 on: push
 
 jobs:
+  # job_id 重複はNG
   unit-test:
+    # ジョブの名前
     name: Unit Test
+    # ジョブが実行されるマシンの定義
     runs-on: ubuntu-latest
+    # timeout時間(単位はminute,デフォルトで360分)
+    timeout-minutes: 360
+    # ジョブが実行するステップの定義
     steps:
       - name: Checkout
         uses: actions/checkout@v2.0.0
@@ -17,7 +25,7 @@ jobs:
       - name: Test
         run: npm test
   lint:
-    name: lint
+    name: linte
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
