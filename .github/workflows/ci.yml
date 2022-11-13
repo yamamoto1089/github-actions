@@ -1,7 +1,9 @@
 # ワークフローの名前
 name: Continuous Integration
 # ワークフローを実行するイベント
-on: push
+on: 
+  workflow_dispatch:
+    inputs: {}
 
 jobs:
   # job_id 重複はNG
