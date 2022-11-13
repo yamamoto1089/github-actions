@@ -2,7 +2,9 @@
 name: Hello,World!
 
 # push時に実行
-on: push
+on: 
+  workflow_dispatch:
+    inputs: {}
 
 # 実行するjob
 jobs:
@@ -15,3 +17,4 @@ jobs:
       - name: say hello
         run: |
           echo "Hello!!!!!" 
+          echo "qwertyuiop" 
