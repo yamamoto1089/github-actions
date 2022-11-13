@@ -13,4 +13,3 @@ jobs:
     # job内で実行される処理を指定
     steps:
       - run: echo "Hello!!!!!"
-      - run: echo ${{"aaa"}}
