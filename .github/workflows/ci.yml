@@ -5,6 +5,12 @@ on:
   workflow_dispatch:
     inputs: {}
 
+inputs:
+  node-version:
+    default: '18.x'
+    required: false
+    description: 'version of nodejs'
+
 jobs:
   # job_id 重複はNG
   unit-test:
@@ -19,10 +25,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.0.0
       - name: Set Node.js
-        uses: actions/setup-node@v3
-        run: node -p -e '`app_version=${require("**/package.json").volta.node}` >> $GITHUB_ENV'
+      - uses: actions/setup-node@v3
         with:
-          node-version: echo "${{ env.app_version }}"
+          node-version: ${{ inputs.node-version }}
       - name: Install dependencies
         run: npm ci
       - name: Test
