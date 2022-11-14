@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       node-version: 
-        default: node -p -e '`${require("./package.json").volta.node}`' 
+        default: awk -F\" '/"node"/{print $4}' package.json
         required: false
         description: 'version of nodejs'
 
