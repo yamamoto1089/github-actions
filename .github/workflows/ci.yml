@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: setup environment variables
         run: |
-          node -e '`app_version=${require("./package.json").version}`' >> $GITHUB_ENV
+          node -p -e '`app_version=${require("**/package.json").volta.node}`'
       - name: Checkout
         uses: actions/checkout@v3.0.0
       - name: Set Node.js
