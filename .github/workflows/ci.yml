@@ -16,12 +16,15 @@ jobs:
     timeout-minutes: 360
     # ジョブが実行するステップの定義
     steps:
+      - name: setup environment variables
+        run: |
+          node -e "console.log('app_version=' + require('./package.json').volta.node)" >> $GITHUB_ENV
       - name: Checkout
         uses: actions/checkout@v3.0.0
       - name: Set Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: node -p -e '`${require("./package.json").volta.node}`'
+          node-version: ${{ env.app_version }}
       - name: Install dependencies
         run: npm ci
       - name: Test
