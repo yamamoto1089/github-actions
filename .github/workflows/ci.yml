@@ -22,7 +22,7 @@ jobs:
       - name: Set Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: node -p -e '`app_version=${require("./package.json").volta.node}`'s
+          node-version: node -p -e '`app_version=${require("./package.json").volta.node}`'
       - name: Install dependencies
         run: npm ci
       - name: Test
