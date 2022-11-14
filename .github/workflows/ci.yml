@@ -21,7 +21,7 @@ jobs:
       - name: Set Node.js ${{ process.env.npm_package_version }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ process.env.npm_package_volta.node }}
+          node-version: require('./package.json').version
       - name: Install dependencies
         run: npm ci
       - name: Test
