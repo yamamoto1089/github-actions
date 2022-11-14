@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     # job内で実行される処理を指定
     steps:
+      - uses: actions/checkout@v3
       - name: say hello
         run: |
           echo "Hello!!!!!" 
