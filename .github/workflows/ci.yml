@@ -3,7 +3,11 @@ name: Continuous Integration
 # ワークフローを実行するイベント
 on: 
   workflow_dispatch:
-    inputs: {}
+    inputs:
+      node_version: 
+        default: node -p -e '`${require("./package.json").volta.node}`' 
+        required: false
+        description: 'version of nodejs'
 
 jobs:
   # job_id 重複はNG
@@ -21,7 +25,7 @@ jobs:
       - name: Set Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: node -p -e '`app_version=${require("./package.json").volta.node}`'
+          node-version: ${{ inputs.node-version }}
       - name: Install dependencies
         run: npm ci
       - name: Test
