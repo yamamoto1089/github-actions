@@ -18,13 +18,13 @@ jobs:
     steps:
       - name: setup environment variables
         run: |
-          node -e "console.log('app_version=' + require('./package.json').volta.node)" >> $GITHUB_ENV
+          node -p -e '`app_version=${require("./package.json").version}`' >> $GITHUB_ENV
       - name: Checkout
         uses: actions/checkout@v3.0.0
       - name: Set Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ env.app_version }}
+          node-version: ${{ env.action_state }}
       - name: Install dependencies
         run: npm ci
       - name: Test
