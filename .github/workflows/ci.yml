@@ -4,7 +4,7 @@ name: Continuous Integration
 on: 
   workflow_dispatch:
     inputs:
-      node_version: 
+      node-version: 
         default: node -p -e '`${require("./package.json").volta.node}`' 
         required: false
         description: 'version of nodejs'
@@ -25,7 +25,7 @@ jobs:
       - name: Set Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ inputs.node_version }}
+          node-version: ${{ inputs.node-version }}
       - name: Node Version
         run: ${{ inputs.node-version }}
       - name: Install dependencies
