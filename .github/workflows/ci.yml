@@ -3,11 +3,7 @@ name: Continuous Integration
 # ワークフローを実行するイベント
 on: 
   workflow_dispatch:
-    inputs:
-      node-version: 
-        default: awk -F\" '/"node"/{print $4}' package.json
-        required: false
-        description: 'version of nodejs'
+    inputs: {}
 
 jobs:
   # job_id 重複はNG
@@ -25,7 +21,8 @@ jobs:
       - name: Set Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ inputs.node-version }}
+          node-version-file: 'package.json'
+          cache: yarn
       - name: Node Version
         run: ${{ inputs.node-version }}
       - name: Install dependencies
