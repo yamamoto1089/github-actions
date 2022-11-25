@@ -1,7 +1,7 @@
 # ワークフローの名前
 name: Continuous Integration
 # ワークフローを実行するイベント
-on: 
+on:
   workflow_dispatch:
     inputs: {}
 
@@ -16,12 +16,10 @@ jobs:
     timeout-minutes: 360
     # ジョブが実行するステップの定義
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3.0.0
       - name: Set Node.js
         uses: actions/setup-node@v3
         with:
-          node-version-file: 'package.json'
+          node-version-file: "package.json"
           cache: yarn
       - name: Node Version
         run: ${{ inputs.node-version }}
@@ -43,4 +41,3 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
-
